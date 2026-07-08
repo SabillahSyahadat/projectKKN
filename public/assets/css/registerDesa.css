@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/img/registerDesa.jpg") center/cover no-repeat;
+  z-index: -1;
+}
+
+/* --- WRAPPER LEBIH RAMPING --- */
+.wrapper {
+  width: 420px; /* Ukuran compact agar tidak terlalu lebar */
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 15px;
+  padding: 25px 30px; /* Padding dikurangi sedikit */
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 1.8rem; /* Ukuran font judul dikecilkan sedikit */
+  margin-bottom: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* --- GRID SYSTEM LEBIH RAPAT --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 15px; /* Gap diperkecil agar lebih padat */
+}
+
+/* --- INPUT FIELD --- */
+.input-field {
+  position: relative;
+  margin-bottom: 15px; /* Margin antar input dikurangi */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.input-field input,
+.input-field select,
+.input-field textarea {
+  width: 100%;
+  height: 38px; /* Tinggi input dikurangi dari 44px */
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 14px; /* Font sedikit dikecilkan */
+  color: #fff;
+  padding: 5px 0;
+}
+
+.input-field textarea {
+  height: 60px; /* Tinggi textarea dirampingkan */
+  resize: none;
+}
+
+.input-field select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* --- LABEL --- */
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label,
+.input-field select:focus ~ label,
+.input-field select:valid ~ label,
+.input-field textarea:focus ~ label,
+.input-field textarea:valid ~ label {
+  font-size: 0.75rem;
+  top: -8px;
+  color: #fff;
+}
+
+/* --- BUTTON --- */
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-top: 15px;
+  width: 100%;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* --- ERROR --- */
+.form-error {
+  background: rgba(255, 82, 82, 0.2);
+  color: #ffb3b3;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  border-left: 4px solid #ff4d4d;
+  text-align: left;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* --- SCROLLBAR --- */
+.wrapper::-webkit-scrollbar { width: 3px; }
+.wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Fix Date & Select */
+.input-field input[type="date"]::-webkit-datetime-edit { color: transparent; }
+.input-field input[type="date"]:focus::-webkit-datetime-edit,
+.input-field input[type="date"]:valid::-webkit-datetime-edit { color: #fff; }
+.input-field select option { background: #1e293b; color: #fff; }
+.register { margin-top: 20px; color: #fff; font-size: 13px; }
+.register a { font-weight: 600; color: #fff; text-decoration: none; }
+.register a:hover { text-decoration: underline; }

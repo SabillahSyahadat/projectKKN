@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Menggunakan gambar loginDesa.jpg */
+  background: url("/assets/img/loginDesa.jpg") center/cover no-repeat;
+  z-index: -1;
+}
+
+/* WRAPPER - Mengikuti gaya Register Anda */
+.wrapper {
+  width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* Glassmorphism diperkuat */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* JUDUL */
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* INPUT FIELD */
+.input-field {
+  position: relative;
+  margin-bottom: 25px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.input-field input {
+  width: 100%;
+  height: 45px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 8px 0;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* ANIMASI LABEL NAIK */
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+  font-size: 0.85rem;
+  top: -8px;
+  color: #fff;
+}
+
+/* FORGET AREA */
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 30px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+#remember {
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.forget label p {
+  margin-left: 8px;
+}
+
+/* BUTTON - Mengikuti gaya Register */
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  border: none;
+  padding: 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+}
+
+button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* LINK REGISTER */
+.register {
+  margin-top: 25px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.wrapper a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+/* ERROR MESSAGE */
+.form-error {
+  background: rgba(255, 82, 82, 0.2);
+  color: #ffb3b3;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* SCROLLBAR */
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
