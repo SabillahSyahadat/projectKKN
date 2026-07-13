@@ -16,9 +16,13 @@ return new class extends Migration
             $table->bigInteger('nik')->unique();
             $table->string('nama_warga', length:512);
             $table->date('tgl_lahir');
+            $table->string('tempat_lahir');
             $table->string('alamat');
             $table->string('jenis_kelamin');
             $table->string('status');
+            $table->string('agama');
+            $table->string('golongan_darah')->nullable();
+            $table->string('kewarganegaraan');
             $table->string('pekerjaan');
             $table->string('email_warga', length:512);
             $table->string('password_warga', length:512);
