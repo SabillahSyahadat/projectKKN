@@ -407,16 +407,6 @@
             <!-- Detail Data Warga -->
             <div class="card-body px-4 pb-5 pt-3">
               <div class="row g-3">
-                
-                <div class="col-md-6">
-                  <div class="info-group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-box"><i class="bi bi-envelope-at"></i></div>
-                    <div class="info-text-wrapper">
-                      <span class="info-label">Email</span>
-                      <p class="info-value">{{ Auth::guard('warga')->user()->email_warga }}</p>
-                    </div>
-                  </div>
-                </div>
 
                 <div class="col-md-6">
                   <div class="info-group" data-aos="fade-up" data-aos-delay="250">

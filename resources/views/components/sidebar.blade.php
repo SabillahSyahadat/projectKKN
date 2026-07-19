@@ -3,7 +3,7 @@
         <div class="mb-2">
             <i class="bi bi-shield-shaded text-danger fs-1"></i>
         </div>
-        <h3 class="fw-bold text-white letter-spacing-1">SIDOMULYO</h3>
+        <h3 class="fw-bold text-white letter-spacing-1">KEPUDIBENER</h3>
         <p class="text-muted small">Administrator</p>
     </div>
     
@@ -12,7 +12,7 @@
         <x-nav-link href="dashboard" :active="request()->is('admin/dashboard')" icon="bi-speedometer2">Dashboard</x-nav-link>
         
         {{-- Data Warga: Ikon identitas/kartu penduduk --}}
-        <x-nav-link href="/admin/daftarWarga" :active="request()->is('warga')" icon="bi-card-list">Data Warga</x-nav-link>
+        <x-nav-link href="/admin/daftarWarga" :active="request()->is('admin/warga')" icon="bi-card-list">Data Warga</x-nav-link>
 
         <x-nav-link href="/admin/galeri" :active="request()->is('admin/galeri')" icon="bi bi-camera">Galeri Desa</x-nav-link>
 

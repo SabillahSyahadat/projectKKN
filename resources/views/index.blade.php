@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Website Resmi Desa Sidomulyo</title>
+  <title>Website Resmi Desa Kepudibener | Kecamatan Turi </title>
 <meta name="description" content="Website resmi Desa Sidomulyo sebagai pusat informasi, layanan digital, dan berita desa.">
 <meta name="keywords" content="Desa Sidomulyo, Website Desa, Layanan Desa, Berita Desa">
 
@@ -160,7 +160,7 @@
     
     <a href="/" class="sdm-logo d-flex align-items-center text-decoration-none">
       <img src="{{ asset('assets/img/logo-surat.png') }}" alt="logo" style="max-height: 40px;">
-      <h1 class="sdm-sitename mb-0">SIDOMULYO</h1>
+      <h1 class="sdm-sitename mb-0">KEPUDIBENER</h1>
     </a>
 
     
@@ -322,13 +322,13 @@
             <div class="animate__animated animate__fadeInLeft">
               <div class="badge-modern mb-3 animate__animated animate__fadeInDown">
                 <span class="bg-danger-subtle text-danger px-3 py-2 rounded-pill fw-bold small">
-                  <i class="bi bi-geo-alt-fill me-1"></i> Kecamatan Deket, Lamongan
+                  <i class="bi bi-geo-alt-fill me-1"></i> Kecamatan Turi, Kabupaten Lamongan
                 </span>
               </div>
               
               <h1 class="display-3 fw-800 text-dark mb-4" style="line-height: 1.1;">
                 Gerbang Layanan <br>
-                <span class="text-danger-premium">Digital Sidomulyo</span>
+                <span class="text-danger-premium">Digital Kepudibener</span>
               </h1>
               
               <p class="fs-5 text-secondary mb-5 animate__delay-1s" style="max-width: 500px;">

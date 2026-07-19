@@ -35,13 +35,11 @@ class AuthController extends Controller
     // 1. Validasi sesuai dengan 3 kolom inputan baru
     $validated = $request->validate([
         'nik'            => 'required|numeric|digits:16',
-        'email_warga'    => 'required|email',
         'password_warga' => 'required|min:8',
-    ], [
+    ], 
+    [
         'nik.required'            => 'NIK wajib diisi.',
         'nik.digits'              => 'NIK harus tepat 16 digit.',
-        'email_warga.required'    => 'Email wajib diisi.',
-        'email_warga.email'       => 'Format email tidak valid.',
         'password_warga.required' => 'Password wajib diisi.',
         'password_warga.min'      => 'Password minimal bertumpu pada 8 karakter.',
     ]);
@@ -50,20 +48,9 @@ class AuthController extends Controller
     $warga = Warga::where('nik', $validated['nik'])->first();
 
     if ($warga) {
-        // Cek juga apakah email yang diinput sudah dipakai oleh NIK lain agar tidak bentrok
-        $emailTerpakai = Warga::where('email_warga', $validated['email_warga'])
-                              ->where('nik', '!=', $validated['nik'])
-                              ->exists();
-
-        if ($emailTerpakai) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['email_warga' => 'Email ini sudah digunakan oleh akun lain.']);
-        }
 
         // 3. JIKA NIK ADA: Update email dan password untuk akun warga tersebut
         $warga->update([
-            'email_warga'    => $validated['email_warga'],
             'password_warga' => Hash::make($validated['password_warga']), // Amankan password dengan Hash
         ]);
 
@@ -79,22 +66,16 @@ class AuthController extends Controller
     public function isLogin(Request $request)
     {
         $credentials = [
-        'email_warga' => $request->email_warga,
-        'password'    => $request->password_warga,
+        'nik' => $request->nik,
+        'password' => $request->password_warga,
     ];
-        $admin = [
-        'email_admin' => $request->email_warga,
-        'password'    => $request->password_warga,
-    ];
+       
 
     if (Auth::guard('warga')->attempt($credentials)) {
         $request->session()->regenerate();
         return redirect()->to('/')->with('validasi', 'Anda berhasil Login');
     }
-    if (Auth::guard('admin')->attempt($admin)) {
-        $request->session()->regenerate();
-        return redirect()->to('/admin/dashboard')->with('validasi', 'Anda berhasil Login');
-    }
+   
 
         return back()->withErrors(['email' => 'Login Warga Gagal']);
     }
@@ -106,9 +87,7 @@ class AuthController extends Controller
 
   
     $request->validate([
-        'nama_warga'   => 'required|string|max:255',
-        
-        'email_warga'  => 'required|email|unique:wargas,email_warga,' . $user->id, 
+        'nama_warga'   => 'required|string|max:255', 
         
         'tgl_lahir'    => 'required|date',
         'alamat'       => 'required',
@@ -154,4 +133,26 @@ class AuthController extends Controller
         // 4. Redirect ke halaman utama dengan pesan sukses
         return redirect('/auth/login')->with('validasi', 'Anda telah keluar.');
     }
+
+    public function isLoginAdmin(Request $request)
+    {
+         $admin = [
+        'email_admin' => $request->email_admin,
+        'password'    => $request->password,
+    ];
+
+     if (Auth::guard('admin')->attempt($admin)) {
+        $request->session()->regenerate();
+        return redirect()->to('/admin/dashboard')->with('validasi', 'Anda berhasil Login');
+    }else{
+        return redirect()->to('/admin/dashboard')->with('validasi', 'Anda berhasil Login');
+    } 
+
+    }
+
+    public function loginAdmin()
+    {
+        return view('/auth/loginAdmin');
+    }
+    
 }

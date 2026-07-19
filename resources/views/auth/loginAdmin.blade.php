@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Desa Sidomulyo</title>
+    <title>Login Administrator - Desa Sidomulyo</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -12,8 +12,9 @@
 
     <style>
         :root {
-            --primary-color: #dc3545;
-            --dark-overlay: rgba(0, 0, 0, 0.6);
+            /* Diubah menjadi biru untuk membedakan dengan login warga (merah) */
+            --primary-color: #0d6efd; 
+            --dark-overlay: rgba(0, 0, 0, 0.7);
         }
 
         body {
@@ -37,9 +38,10 @@
             display: flex;
         }
 
-        /* Bagian Kiri: Visual Desa */
+        /* Bagian Kiri: Visual Admin */
         .login-visual {
             background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), 
+                        /* Opsional: Gunakan gambar yang berbeda untuk admin jika ada */
                         url("{{ asset('assets/img/loginDesa.jpg') }}");
             background-size: cover;
             background-position: center;
@@ -82,7 +84,7 @@
         .form-floating > .form-control:focus {
             background-color: #fff;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.1);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
         }
 
         .btn-login {
@@ -95,9 +97,9 @@
         }
 
         .btn-login:hover {
-            background: #b02a37;
+            background: #0b5ed7;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.2);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.2);
         }
 
         .divider {
@@ -120,9 +122,9 @@
         
         <div class="login-visual">
             <div class="animate__animated animate__fadeInLeft animate__delay-1s">
-                <span class="badge bg-danger mb-3 px-3 py-2 rounded-pill">E-Government</span>
-                <h2>Desa <br>Sidomulyo</h2>
-                <p class="text-white-50">Sistem Informasi Layanan Digital Desa Binaan Kecamatan Deket, Kabupaten Lamongan.</p>
+                <span class="badge bg-primary mb-3 px-3 py-2 rounded-pill">Administrator Panel</span>
+                <h2>Sistem<br>Manajemen Desa</h2>
+                <p class="text-white-50">Portal khusus perangkat desa dan administrator sistem E-Government Sidomulyo.</p>
             </div>
         </div>
 
@@ -130,8 +132,8 @@
             <div class="animate__animated animate__fadeIn animate__delay-1s">
                 
                 <div class="mb-4">
-                    <h3 class="fw-800 mb-1">Masuk</h3>
-                    <p class="text-muted small">Silakan akses akun warga Anda di bawah ini</p>
+                    <h3 class="fw-800 mb-1">Admin Login</h3>
+                    <p class="text-muted small">Silakan masuk menggunakan email dinas Anda</p>
                 </div>
 
                 {{-- Alert Error --}}
@@ -151,50 +153,48 @@
                 </div>
                 @endif
 
-                <form action="{{ route('login.post') }}" method="POST">
+                {{-- Pastikan route ini mengarah ke controller admin --}}
+                <form action="{{ route('admin.login.post') }}" method="POST">
                     @csrf
                     
                     <div class="form-floating mb-3">
-                        <input type="text" 
-                               name="nik" 
+                        <input type="email" 
+                               name="email_admin" 
                                class="form-control" 
-                               id="floatingNik" 
-                               placeholder="NIK" 
-                               maxlength="16" 
-                               pattern="[0-9]*" 
-                               inputmode="numeric" 
-                               style="font-family: monospace; letter-spacing: 1px;"
+                               id="floatingEmail" 
+                               placeholder="name@example.com" 
                                required>
-                        <label for="floatingNik" class="text-muted">Nomor Induk Kependudukan (NIK)</label>
+                        <label for="floatingEmail" class="text-muted">Alamat Email</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="password" name="password_warga" class="form-control" id="floatingPassword" placeholder="Password" required>
+                        <input type="password" 
+                               name="password" 
+                               class="form-control" 
+                               id="floatingPassword" 
+                               placeholder="Password" 
+                               required>
                         <label for="floatingPassword" class="text-muted">Kata Sandi</label>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="remember">
+                            <input class="form-check-input" type="checkbox" id="remember" name="remember">
                             <label class="form-check-label small text-muted" for="remember">Ingat Saya</label>
                         </div>
-                        <a href="#" class="text-danger small fw-bold text-decoration-none">Lupa Password?</a>
+                        {{-- Opsional: Matikan fitur lupa password jika ingin lebih ketat --}}
+                        <a href="#" class="text-primary small fw-bold text-decoration-none">Lupa Password?</a>
                     </div>
 
-                    <button type="submit" class="btn btn-danger w-100 btn-login mb-4">
-                        Login Sekarang <i class="bi bi-box-arrow-in-right ms-2"></i>
+                    <button type="submit" class="btn btn-primary w-100 btn-login mb-2">
+                        Masuk ke Dashboard <i class="bi bi-shield-lock ms-2"></i>
                     </button>
-
-                    <div class="text-center">
-                        <p class="small text-muted mb-0">Belum memiliki akun?</p>
-                        <a href="{{ route('register') }}" class="text-danger fw-bold text-decoration-none">Daftar Akun Baru</a>
-                    </div>
                 </form>
 
                 <div class="divider"></div>
                 <div class="text-center">
                     <a href="/" class="btn btn-link btn-sm text-secondary text-decoration-none">
-                        <i class="bi bi-arrow-left me-1"></i> Kembali ke Beranda
+                        <i class="bi bi-arrow-left me-1"></i> Kembali ke Website Warga
                     </a>
                 </div>
             </div>

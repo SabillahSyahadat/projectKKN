@@ -19,9 +19,12 @@ class Warga extends Authenticatable
         'jenis_kelamin',
         'status',
         'pekerjaan',
-        'email_warga',
         'password_warga',
         'tgl_lahir',
+        'tempat_lahir',
+        'agama',
+        'golongan_darah',
+        'kewarganegaraan',
     ];
 
     protected $casts = [
@@ -65,7 +68,6 @@ class Warga extends Authenticatable
     // Melakukan update pada instance user tersebut
     $user->update([
         'nama_warga'    => $data->nama_warga,
-        'email_warga'   => $data->email_warga,
         'tgl_lahir'     => $data->tgl_lahir,
         'alamat'        => $data->alamat,
         'jenis_kelamin' => $data->jenis_kelamin,

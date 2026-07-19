@@ -18,7 +18,8 @@ Route::post('/auth/register', [AuthController::class, 'isRegister'])->name('isRe
 Route::get('/profil/logout', [AuthController::class, 'logout'])->name('logout');
 Route::put('/profil/warga/update', [AuthController::class, 'update'])->name('profil.update');
 Route::get('/auth/logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::get('/auth/loginAdmin', [AuthController::class, 'loginAdmin'])->name('loginAdmin');
+Route::post('/auth/loginAdmin', [AuthController::class, 'isLoginAdmin'])->name('admin.login.post');
 
 Route::get('/profil', [PageController::class, 'show'])->name('profil.show');
 Route::get('/updateProfil/warga', [PageController::class, 'updateProfil'])->name('updateProfil.warga');

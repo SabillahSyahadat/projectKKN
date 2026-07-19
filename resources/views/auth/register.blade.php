@@ -32,7 +32,7 @@
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
             background: white;
-            max-width: 1000px; /* Sedikit dikecilkan agar pas dengan form minimalis */
+            max-width: 1000px;
             width: 100%;
             display: flex;
         }
@@ -43,7 +43,6 @@
                         url("{{ asset('assets/img/registerDesa.jpg') }}");
             background-size: cover;
             background-position: center;
-            width: 40px; /* Disesuaikan proporsinya */
             width: 40%;
             padding: 50px;
             display: flex;
@@ -155,19 +154,6 @@
                                        value="{{ old('nik') }}"
                                        required>
                                 <label for="regNik">Nomor Induk Kependudukan (16 Digit)</label>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="email" 
-                                       name="email_warga" 
-                                       class="form-control" 
-                                       id="regEmail" 
-                                       placeholder="Email" 
-                                       value="{{ old('email_warga') }}"
-                                       required>
-                                <label for="regEmail">Alamat Email Aktif</label>
                             </div>
                         </div>
 

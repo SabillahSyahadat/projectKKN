@@ -89,7 +89,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top shadow-sm" style="background: rgba(255,255,255,0.95);">
     <div class="container position-relative d-flex align-items-center justify-content-between">
       <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename" style="color: #333; font-weight: 700;">DESA SIDOMULYO</h1>
+        <h1 class="sitename" style="color: #333; font-weight: 700;">DESA KEPUDIBENER</h1>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -159,13 +159,7 @@
                   </div>
 
                   {{-- Email --}}
-                  <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
-                    <label class="form-label fw-bold"><i class="bi bi-envelope me-2"></i>Email Warga</label>
-                    <input type="email" name="email_warga" class="form-control @error('email_warga') is-invalid @enderror" value="{{ old('email_warga', $warga->email_warga) }}" required>
-                    @error('email_warga')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                  </div>
+                  `
 
                   {{-- Tanggal Lahir --}}
                   <div class="col-md-6" data-aos="fade-left" data-aos-delay="400">
