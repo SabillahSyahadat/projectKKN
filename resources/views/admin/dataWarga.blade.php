@@ -8,7 +8,7 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div class="header-text">
                 <h2 class="fw-800 text-dark mb-1 tracking-tight">Data Warga</h2>
-                <p class="text-secondary mb-0">Manajemen database warga Desa Sidomulyo</p>
+                <p class="text-secondary mb-0">Manajemen database warga Desa Kepudibener</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex gap-2">
                 <a href="{{ route('admin.tambahWarga') }}" class="btn btn-dark rounded-pill px-4 shadow-sm fw-semibold">
@@ -85,7 +85,7 @@
                             <td><span class="badge bg-light text-dark border fw-normal">{{ $warga->nik }}</span></td>
                             <td class="text-center">
                                 <span class="badge {{ $warga->jenis_kelamin == 'L' ? 'bg-info-subtle text-info' : 'bg-danger-subtle text-danger' }} rounded-pill px-3">
-                                    {{ $warga->jenis_kelamin == 'L' ? 'L' : 'P' }}
+                                    {{ $warga->jenis_kelamin == 'L' ? 'L' : 'Belum Di Update' }}
                                 </span>
                             </td>
                             <td class="small text-secondary">{{ $warga->pekerjaan }}</td>
@@ -95,7 +95,18 @@
                             <td class="text-end pe-4">
                                 <div class="btn-group shadow-sm rounded-3 overflow-hidden">
                                     <a href="{{ route('admin.showWarga', $warga->id) }}" class="btn btn-white btn-sm px-3" title="Detail"><i class="bi bi-eye text-primary"></i></a>
-                                    <button class="btn btn-white btn-sm px-3" title="Hapus"><i class="bi bi-trash3 text-danger"></i></button>
+                                    <!-- KODE BENAR -->
+                                <form action="{{ route('admin.deleteWarga', $warga->id) }}" method="POST" class="d-inline">
+                                    {{-- Wajib ada CSRF token untuk keamanan --}}
+                                    @csrf 
+                                    
+                                    {{-- Ini trik Laravel agar form mengirimkan request DELETE --}}
+                                    @method('DELETE') 
+                                    
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data warga ini?')">
+                                        <i class="bi bi-trash"></i> Hapus
+                                    </button>
+                                </form>
                                 </div>
                             </td>
                         </tr>

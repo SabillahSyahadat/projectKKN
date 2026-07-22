@@ -34,22 +34,18 @@ Route::get('/berita/{slug}', [BeritaController::class, 'showDetailWarga'])->name
 Route::get('admin/dashboard', [AuthController::class, 'adminDashboard'])->name('adminDasboard');
 Route::get('/admin/laporan', [AdminController::class, 'laporan'])->name('adminLaporan');
 Route::delete('/admin/laporan/{id}', [AdminController::class, 'destroyLaporan'])->name('admin.laporan.destroy');
-Route::get('/admin/detailLaporan/{id}', [AdminController::class, 'detailLaporan'])->name('admin.detailLaporan');
 Route::get('/admin/berita', [AdminController::class, 'showBerita'])->name('adminBerita');
 Route::get('/admin/addBerita', [AdminController::class, 'addBerita'])->name('addBerita');
 Route::post('/admin/storeBerita', [AdminController::class, 'storeBerita'])->name('storeBerita');
 Route::post('admin/logout', [AuthController::class, 'logoutAdmin'])->name('logoutAdmin');
 Route::delete('/admin/berita/{id}', [AdminController::class, 'destroyBerita'])->name('berita.destroy');
+Route::get('/admin/detailLaporan/{id}', [AdminController::class, 'detailLaporan'])->name('admin.detailLaporan');
 Route::get('admin/berita/{slug}', [BeritaController::class, 'showDetailAdmin'])->name('berita.detailAdmin');
-
+Route::delete('/admin/deleteWarga/{id}', [AdminController::class, 'deleteWarga'])->name('admin.deleteWarga');
 
 Route::get('/admin/kritik-saran', [AdminController::class, 'adminIndex'])->name('admin.kritik');
 Route::delete('/admin/kritik-saran/{id}', [AdminController::class, 'destroyKritik'])->name('admin.kritik.destroy');
 
-// Route::post('surat/pengantar', [PDFController::class, 'pengantar'])->name('pengantar');
-// Route::post('surat/domisili', [PDFController::class, 'domisili'])->name('domisili');
-// Route::post('surat/sktm', [PDFController::class, 'sktm'])->name('sktm');
-// Route::post('/surat/simpan', [PDFController::class, 'simpanKeDatabase'])->name('simpan.pengajuan');
 
 Route::post('/surat/konfirmasi', [PDFController::class, 'konfirmasi'])->name('konfirmasi');
 Route::post('/surat/simpan', [PDFController::class, 'simpanPengajuan'])->name('simpan.pengajuan');

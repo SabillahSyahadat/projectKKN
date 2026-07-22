@@ -193,4 +193,18 @@ public function storeWarga(Request $request)
     return redirect()->route('admin.daftarWarga')
         ->with('success', 'Data warga berhasil ditambahkan!');
 }
+
+public function deleteWarga($id) {
+    $warga = Warga::find($id);
+
+    if (!$warga) {
+        dd('Berhasil hapus data');
+    }
+
+    // Lakukan hapus data
+    $warga->delete();
+
+    // Redirect kembali ke halaman daftar warga
+   return redirect()->route('admin.daftarWarga')->with('success', 'Data warga berhasil dihapus!');
+}
 }

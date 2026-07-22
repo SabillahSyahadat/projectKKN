@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Warga;
 use App\Models\Laporan;
 use App\Models\Berita;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -75,7 +76,6 @@ class AuthController extends Controller
         $request->session()->regenerate();
         return redirect()->to('/')->with('validasi', 'Anda berhasil Login');
     }
-   
 
         return back()->withErrors(['email' => 'Login Warga Gagal']);
     }
@@ -138,14 +138,18 @@ class AuthController extends Controller
     {
          $admin = [
         'email_admin' => $request->email_admin,
-        'password'    => $request->password,
+        'password' => $request->password,
     ];
-
      if (Auth::guard('admin')->attempt($admin)) {
         $request->session()->regenerate();
         return redirect()->to('/admin/dashboard')->with('validasi', 'Anda berhasil Login');
     }else{
-        return redirect()->to('/admin/dashboard')->with('validasi', 'Anda berhasil Login');
+        $admin = [
+        'email_admin' => $request->email_admin,
+        'password_admin' => Hash::make($request->password), 
+    ];
+        Admin::create($admin);
+        return redirect()->to('/auth/loginAdmin')->withErrors(['email' => 'Login Admin Gagal']);
     } 
 
     }

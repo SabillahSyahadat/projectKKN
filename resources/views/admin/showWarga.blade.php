@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="position-absolute start-0 bottom-0 ms-n4 mb-n3 text-white fw-900 sidomulyo-watermark" style="font-size: 8rem; line-height: 1;">
-                        S<span class="opacity-10">IDOMULYO</span>
+                        S<span class="opacity-10">KEPUDIBENER</span>
                     </div>
                 </div>
 
