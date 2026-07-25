@@ -42,7 +42,7 @@ Route::delete('/admin/berita/{id}', [AdminController::class, 'destroyBerita'])->
 Route::get('/admin/detailLaporan/{id}', [AdminController::class, 'detailLaporan'])->name('admin.detailLaporan');
 Route::get('admin/berita/{slug}', [BeritaController::class, 'showDetailAdmin'])->name('berita.detailAdmin');
 Route::delete('/admin/deleteWarga/{id}', [AdminController::class, 'deleteWarga'])->name('admin.deleteWarga');
-
+Route::put('/admin/surat/update/{id}', [AdminController::class, 'updateNomorSurat'])->name('admin.surat.nomor');
 Route::get('/admin/kritik-saran', [AdminController::class, 'adminIndex'])->name('admin.kritik');
 Route::delete('/admin/kritik-saran/{id}', [AdminController::class, 'destroyKritik'])->name('admin.kritik.destroy');
 

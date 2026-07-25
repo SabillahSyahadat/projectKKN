@@ -35,19 +35,19 @@
                 </td>
                 <td class="header-text">
                     <h3>PEMERINTAH KABUPATEN LAMONGAN</h3>
-                    <h3>KECAMATAN DEKET</h3>
-                    <h2>KANTOR KEPALA DESA SIDOMULYO</h2>
-                    <p>Jl. Raya Desa Sidomulyo No. 01, Kode Pos 622xx</p>
+                    <h3>KECAMATAN TURI</h3>
+                    <h2>KANTOR KEPALA DESA KEPUDIBENER</h2>
+                    <p>Jl. Raya Desa Kepudibener No. 22, Kode Pos 62262</p>
                 </td>
             </tr>
         </table>
     </div>
 
     <p class="judul-surat">SURAT PENGANTAR</p>
-    <p class="nomor-surat">Nomor: 145 / {{ $surat->id }} / 413.312.05 / 2026</p>
+    <p class="nomor-surat">Nomor: {{ $surat->nomor_surat ?? ' ' }}</p>
 
     <div class="isi-surat">
-        <p>Yang bertanda tangan di bawah ini Kepala Desa Sidomulyo, Kecamatan Deket, Kabupaten Lamongan, menerangkan dengan sebenarnya bahwa:</p>
+        <p>Yang bertanda tangan di bawah ini Kepala Desa Kepudibener, Kecamatan Turi, Kabupaten Lamongan, menerangkan dengan sebenarnya bahwa:</p>
         
         <table class="data-table">
             <tr>

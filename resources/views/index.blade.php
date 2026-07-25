@@ -1006,19 +1006,21 @@
 <!-- /Features Section -->
 
     <!-- Clients Section -->
-    <section id="clients" class="clients section py-5 bg-light">
+   <section id="clients" class="clients section py-5 bg-light">
   <div class="container section-title text-center mb-5" data-aos="fade-up">
     <span class="text-danger fw-bold text-uppercase tracking-wider small">Pemerintahan Desa</span>
     <h2 class="fw-800 mt-2">Struktur <span class="text-danger">Organisasi</span></h2>
     <div class="mx-auto bg-danger mb-3" style="width: 50px; height: 3px; border-radius: 10px;"></div>
-    <h3 class="text-muted mx-auto" style="max-width: 600px;">Mengenal lebih dekat para perangkat masyarakat yang berdedikasi untuk Desa Sidomulyo.</h3>
+    <h3 class="text-muted mx-auto" style="max-width: 600px;">Mengenal lebih dekat para perangkat masyarakat yang berdedikasi.</h3>
   </div>
 
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row g-3 g-md-4 justify-content-center">
-
+  <div class="container-fluid px-3 px-md-5" data-aos="fade-up" data-aos-delay="100">
+    <!-- Wadah Scroll Horizontal -->
+    <div class="horizontal-scroll-wrapper d-flex gap-3 gap-md-4 pb-4">
+      
       @foreach($perangkat as $staff)
-      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+      <!-- Kartu Perangkat Desa (Lebar diatur via CSS agar konsisten) -->
+      <div class="staff-card-container flex-shrink-0">
         <div class="staff-card shadow-sm bg-white rounded-5 overflow-hidden transition-all h-100">
           
           <div class="staff-img-wrapper position-relative overflow-hidden">
@@ -1062,11 +1064,41 @@
     .fw-800 { font-weight: 800; }
     .fw-600 { font-weight: 600; }
     
+    /* Konfigurasi Scroll Horizontal */
+    .horizontal-scroll-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS */
+        scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Sembunyikan scrollbar di Chrome/Safari/Edge */
+    .horizontal-scroll-wrapper::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .staff-card-container {
+        /* Ukuran default untuk mobile */
+        width: 170px;
+        scroll-snap-align: center;
+    }
+
+    /* Responsif: Perbesar ukuran kartu saat di layar lebar (Tablet/Desktop) */
+    @media (min-width: 768px) {
+        .staff-card-container {
+            width: 250px;
+            scroll-snap-align: start;
+        }
+    }
+
     .staff-card {
         border: 1px solid rgba(0,0,0,0.02);
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         cursor: pointer;
-        /* Penting untuk mobile touch feedback */
         -webkit-tap-highlight-color: transparent;
     }
 
@@ -1119,33 +1151,29 @@
         background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     }
 
+    /* Munculkan overlay secara default di mobile karena tidak ada fitur hover */
+    @media (max-width: 767px) {
+        .staff-overlay {
+            opacity: 1;
+        }
+    }
+
     .bg-danger-subtle {
         background-color: #fff5f5 !important;
         border: 1px solid rgba(232, 69, 69, 0.1);
     }
 
     /* Responsive Typography */
-    .staff-name {
-        font-size: 0.9rem;
-    }
-
-    .badge-jabatan .badge {
-        font-size: 0.65rem;
-        padding: 5px 10px;
-    }
-
-    .nip-text {
-        font-size: 0.6rem;
-    }
+    .staff-name { font-size: 0.9rem; }
+    .badge-jabatan .badge { font-size: 0.65rem; padding: 5px 10px; }
+    .nip-text { font-size: 0.6rem; }
 
     @media (min-width: 768px) {
         .staff-name { font-size: 1.1rem; }
         .badge-jabatan .badge { font-size: 0.75rem; }
         .nip-text { font-size: 0.7rem; }
-        .staff-overlay { opacity: 0; } /* Munculkan hanya di hover */
     }
 
-    /* Memastikan teks tidak berantakan */
     .text-truncate {
         display: block;
         overflow: hidden;
@@ -1550,8 +1578,10 @@
 
                     <div class="post-img" style="height: 250px; overflow: hidden;">
                         @if($item->gambar_berita)
+                            <!-- Cukup panggil 'storage/' karena $item->gambar_berita sudah berisi 'uploads/berita/namafile.jpg' -->
                             <img src="{{ asset('storage/' . $item->gambar_berita) }}" alt="{{ $item->nama_berita }}" class="img-fluid w-100 h-100 object-fit-cover transition-scale">
                         @else
+                            <!-- Untuk default image, tetap gunakan full path karena diketik manual -->
                             <img src="{{ asset('storage/uploads/berita/template.png') }}" alt="Default Image" class="img-fluid w-100 h-100 object-fit-cover">
                         @endif
                     </div>

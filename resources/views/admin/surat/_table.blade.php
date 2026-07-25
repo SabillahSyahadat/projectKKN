@@ -6,6 +6,8 @@
                     <th class="ps-4 py-4 text-uppercase tracking-wider text-muted fw-bold small">Pemohon</th>
                     <th class="py-4 text-uppercase tracking-wider text-muted fw-bold small">Identitas</th>
                     <th class="py-4 text-uppercase tracking-wider text-muted fw-bold small">Keperluan</th>
+                    <!-- Kolom Baru: Nomor Surat -->
+                    <th class="py-4 text-uppercase tracking-wider text-muted fw-bold small">Nomor Surat</th>
                     <th class="py-4 text-uppercase tracking-wider text-muted fw-bold small text-center">Status</th>
                     <th class="py-4 text-uppercase tracking-wider text-muted fw-bold small text-center">Aksi</th>
                 </tr>
@@ -32,6 +34,31 @@
                             {{ $item->keperluan }}
                         </div>
                     </td>
+                    
+                    <!-- Form Input Nomor Surat Baru -->
+                 
+                    <td>
+                        <form action="{{ route('admin.surat.nomor', $item->id) }}" method="POST">
+                            @csrf
+                            @method('PUT') 
+                            <div class="input-group input-group-sm" style="min-width: 140px; max-width: 180px;">
+                                <input type="text" 
+                                    name="nomor_surat" 
+                                    class="form-control" 
+                                    placeholder="Input No..." 
+                                    value="{{ $item->nomor_surat ?? '' }}"
+                                    {{ $item->status != 'pending' ? 'disabled' : '' }}>
+                                    
+                                <button class="btn {{ $item->nomor_surat ? 'btn-success' : 'btn-outline-primary' }}" 
+                                        type="submit" 
+                                        title="Simpan Nomor"
+                                        {{ $item->status != 'pending' ? 'disabled' : '' }}>
+                                    <i class="bi bi-save2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </td>
+
                     <td class="text-center">
                         @if($item->status == 'pending')
                             <span class="status-badge warning">Menunggu</span>
@@ -73,7 +100,8 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center py-5">
+                    <!-- PENTING: Update colspan dari 5 menjadi 6 karena ada kolom baru -->
+                    <td colspan="6" class="text-center py-5">
                         <div class="py-5">
                             <i class="bi bi-file-earmark-x display-1 text-light"></i>
                             <p class="mt-3 text-muted">Belum ada antrean pengajuan surat.</p>

@@ -63,7 +63,7 @@
                             @else
                                 <img src="{{ asset('storage/uploads/berita/template.png') }}" class="img-fluid w-100 object-fit-cover" alt="Default">
                             @endif
-                        </div>
+                        </div> 
 
                         <div class="news-content text-muted fs-5">
                             {!! nl2br(e($berita->isi_berita)) !!}

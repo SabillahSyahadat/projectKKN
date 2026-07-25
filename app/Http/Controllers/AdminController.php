@@ -207,4 +207,14 @@ public function deleteWarga($id) {
     // Redirect kembali ke halaman daftar warga
    return redirect()->route('admin.daftarWarga')->with('success', 'Data warga berhasil dihapus!');
 }
+
+public function updateNomorSurat(Request $request, $id){
+    $surat = Surat::find($id);
+
+    $surat->update([
+        'nomor_surat' => $request->nomor_surat,
+    ]);
+    return redirect()->back()->with('success', 'Nomor surat berhasil ditambahkan!');
+}
+
 }
