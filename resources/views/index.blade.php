@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Website Resmi Desa Kepudibener | Kecamatan Turi </title>
-<meta name="description" content="Website resmi Desa Sidomulyo sebagai pusat informasi, layanan digital, dan berita desa.">
-<meta name="keywords" content="Desa Sidomulyo, Website Desa, Layanan Desa, Berita Desa">
+<meta name="description" content="Website resmi Desa Kepudibener sebagai pusat informasi, layanan digital, dan berita desa.">
+<meta name="keywords" content="Desa Kepudibener, Website Desa, Layanan Desa, Berita Desa">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -269,7 +269,7 @@
   
   <div class="position-absolute end-0 top-0 h-100 w-lg-60 w-100 animate__animated animate__fadeInRight" style="z-index: 1;">
     <div class="hero-image-container h-100">
-        <img src="{{ asset('assets/img/backgroundIndex.jpg') }}" alt="Desa Sidomulyo" class="w-100 h-100 object-fit-cover hero-parallax">
+        <img src="{{ asset('assets/img/backgroundIndex.jpg') }}" alt="Desa Kepudibener" class="w-100 h-100 object-fit-cover hero-parallax">
         <div class="hero-gradient-overlay"></div>
     </div>
   </div>
@@ -306,7 +306,7 @@
               </div>
 
               <p class="fs-6 text-secondary mb-4" style="max-width: 500px;">
-                Anda terhubung dengan sistem layanan mandiri Sidomulyo. Pantau status pengajuan Anda atau buat dokumen baru hari ini.
+                Anda terhubung dengan sistem layanan mandiri Kepudibener. Pantau status pengajuan Anda atau buat dokumen baru hari ini.
               </p>
               
               <div class="d-flex flex-wrap gap-3">
@@ -414,7 +414,7 @@
         <h2 class="fw-800 mt-2">Tentang <span class="text-danger">Kami</span></h2>
         <div class="mx-auto bg-danger mb-4" style="width: 60px; height: 4px; border-radius: 10px;"></div>
         <h3 class="lead text-muted mx-auto fw-normal" style="max-width: 700px; line-height: 1.8;">
-    Desa Sidomulyo berkomitmen tinggi dalam memberikan pelayanan terbaik kepada masyarakat melalui inovasi teknologi informasi yang inklusif.
+    Desa Kepudibener berkomitmen tinggi dalam memberikan pelayanan terbaik kepada masyarakat melalui inovasi teknologi informasi yang inklusif.
 </h3>
     </div>
   </div>
@@ -424,7 +424,7 @@
       
       <div class="col-lg-6" data-aos="fade-right">
         <div class="sdm-about-wrapper">
-          <img src="{{ asset('assets/img/loginDesa.jpg') }}" class="img-fluid sdm-img-main" alt="Suasana Desa Sidomulyo">
+          <img src="{{ asset('assets/img/loginDesa.jpg') }}" class="img-fluid sdm-img-main" alt="Suasana Desa Kepudibener">
           
           @auth('warga')
             <div class="sdm-personal-overlay animate__animated animate__fadeInUp">
@@ -637,7 +637,7 @@
     <h2 class="fw-800 mt-2">Layanan <span class="text-danger">Digital</span></h2>
     <div class="mx-auto bg-danger mb-3" style="width: 50px; height: 3px; border-radius: 10px;"></div>
     <p class="text-muted mx-auto fs-3 fw-normal" style="max-width: 800px; line-height: 1.6;">
-    Pemerintah Desa Sidomulyo kini hadir lebih dekat dalam genggaman Anda. 
+    Pemerintah Desa Kepudibener kini hadir lebih dekat dalam genggaman Anda. 
     <span class="d-block d-md-inline">Akses layanan publik dengan cepat, mudah, dan transparan.</span>
 </p>
   </div>
@@ -787,7 +787,7 @@
     <!-- Call To Action Section -->
     <section id="pengumuman" class="call-to-action section dark-background position-relative py-5">
   
-  <img src="{{ asset('assets/img/cta-bg.jpg') }}" alt="Pengumuman Sidomulyo" class="position-absolute w-100 h-100 object-fit-cover top-0 start-0">
+  <img src="{{ asset('assets/img/cta-bg.jpg') }}" alt="Pengumuman Kepudibener" class="position-absolute w-100 h-100 object-fit-cover top-0 start-0">
   <div class="cta-overlay position-absolute w-100 h-100 top-0 start-0"></div>
 
   <div class="container position-relative" style="z-index: 2;">
@@ -799,7 +799,7 @@
         </div>
         <h3 class="fw-bold display-6 text-white mb-3">Pemberitahuan <span class="text-danger">Warga</span></h3>
         <p class="fs-5 text-white-50 lh-base">
-          Diberitahukan kepada seluruh warga Desa Sidomulyo bahwa pelayanan 
+          Diberitahukan kepada seluruh warga Desa Kepudibener bahwa pelayanan 
           administrasi desa tutup pada tanggal <strong>17 Agustus 2026</strong> dalam rangka 
           Hari Kemerdekaan RI. Pelayanan akan dibuka kembali pada hari kerja berikutnya.
         </p>
@@ -869,7 +869,7 @@
       <div class="mx-auto bg-danger mb-3" style="width: 50px; height: 3px; border-radius: 10px;"></div>
       <p class="text-muted mx-auto fs-3 fw-light" style="max-width: 800px; line-height: 1.5;">
     Mengenal lebih dekat <span class="text-dark fw-bold">identitas</span>, 
-    tata ruang, dan <span class="text-dark fw-bold">potensi unggulan</span> Desa Sidomulyo.
+    tata ruang, dan <span class="text-dark fw-bold">potensi unggulan</span> Desa Kepudibener.
 </p>
     </div>
 
@@ -877,7 +877,7 @@
       
       <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
         <div class="position-relative overflow-hidden rounded-5 shadow-lg profile-img-wrapper border border-5 border-white">
-          <img src="{{ asset('assets/img/features-bg.jpg') }}" class="img-fluid w-100 h-100 object-fit-cover shadow-inner" alt="Kantor Balai Desa Sidomulyo">
+          <img src="{{ asset('assets/img/features-bg.jpg') }}" class="img-fluid w-100 h-100 object-fit-cover shadow-inner" alt="Kantor Balai Desa Kepudibener">
           
           <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-premium"></div>
           
@@ -887,7 +887,7 @@
                 <small class="text-uppercase fw-bold tracking-wider opacity-75">Pusat Pemerintahan</small>
             </div>
             <h4 class="fw-800 mb-0">Kantor Balai Desa</h4>
-            <p class="small opacity-90 mb-0">Melayani dengan integritas untuk warga Sidomulyo.</p>
+            <p class="small opacity-90 mb-0">Melayani dengan integritas untuk warga Kepudibener.</p>
           </div>
         </div>
       </div>
@@ -1207,13 +1207,13 @@
     <!-- Stats Section -->
     <section id="stats" class="stats section dark-background position-relative overflow-hidden py-5">
 
-  <img src="{{ asset('assets/img/stats-bg.jpg') }}" alt="Statistik Sidomulyo" data-aos="fade-in" class="position-absolute w-100 h-100 object-fit-cover top-0 start-0">
+  <img src="{{ asset('assets/img/stats-bg.jpg') }}" alt="Statistik Kepudibener" data-aos="fade-in" class="position-absolute w-100 h-100 object-fit-cover top-0 start-0">
   <div class="position-absolute w-100 h-100 top-0 start-0" style="background: rgba(0,0,0,0.7);"></div>
 
   <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
 
     <div class="text-center mb-5">
-      <h3 class="fw-bold text-white mb-2">Statistik Desa <span class="text-danger">Sidomulyo</span></h3>
+      <h3 class="fw-bold text-white mb-2">Statistik Desa <span class="text-danger">Kepudibener</span></h3>
       <p class="text-light opacity-75">Gambaran umum data kependudukan dan potensi desa saat ini</p>
       <div class="mx-auto bg-danger" style="width: 60px; height: 4px; border-radius: 2px;"></div>
     </div>
@@ -1294,7 +1294,7 @@
     <span class="text-muted small fw-bold text-uppercase tracking-wider">Dokumentasi Desa</span>
     <h2 class="fw-800 mt-2">Galeri <span class="text-danger">Kegiatan</span></h2>
     <div class="mx-auto bg-danger mb-4" style="width: 50px; height: 3px; border-radius: 10px;"></div>
-    <h3 class="text-muted mx-auto" style="max-width: 600px;">Momen berharga dan potret kegiatan kemasyarakatan di Desa Sidomulyo</h3>
+    <h3 class="text-muted mx-auto" style="max-width: 600px;">Momen berharga dan potret kegiatan kemasyarakatan di Desa Kepudibener</h3>
   </div>
 
   <div class="container-fluid px-md-5">
@@ -1459,7 +1459,7 @@
         <div class="content px-xl-5 mb-4" data-aos="fade-up">
           <h3 class="fw-bold"><span class="text-dark">Pertanyaan yang Sering </span><span class="text-danger">Diajukan</span></h3>
           <h4 class="text-muted">
-            Butuh bantuan cepat? Berikut adalah rangkuman jawaban untuk pertanyaan yang paling sering ditanyakan oleh masyarakat mengenai layanan Desa Sidomulyo.
+            Butuh bantuan cepat? Berikut adalah rangkuman jawaban untuk pertanyaan yang paling sering ditanyakan oleh masyarakat mengenai layanan Desa Kepudibener.
           </h4>
         </div>
 
@@ -1492,7 +1492,7 @@
             <h3 class="fw-bold fs-6">Di mana saya bisa memberikan usul pembangunan desa?</h3>
             <div class="faq-content mt-2">
               <p class="text-muted mb-0">
-                Anda dapat menggunakan fitur <strong>Kritik & Saran</strong> di bagian bawah website atau menu Laporan Warga untuk memberikan aspirasi demi kemajuan Desa Sidomulyo.
+                Anda dapat menggunakan fitur <strong>Kritik & Saran</strong> di bagian bawah website atau menu Laporan Warga untuk memberikan aspirasi demi kemajuan Desa Kepudibener.
               </p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
@@ -1503,7 +1503,7 @@
 
       <div class="col-lg-5 order-1 order-lg-2 text-center" data-aos="zoom-in" data-aos-delay="300">
         <div class="image-stack position-relative d-inline-block">
-          <img src="{{ asset('assets/img/faq.jpg') }}" class="img-fluid rounded-5 shadow-lg" alt="Layanan Sidomulyo" style="border: 8px solid white;">
+          <img src="{{ asset('assets/img/faq.jpg') }}" class="img-fluid rounded-5 shadow-lg" alt="Layanan Kepudibener" style="border: 8px solid white;">
           <div class="position-absolute bottom-0 start-0 bg-danger p-3 rounded-4 shadow-lg d-none d-md-block" style="transform: translate(-30%, 30%);">
              <i class="bi bi-headset fs-1 text-white"></i>
           </div>
@@ -1568,7 +1568,7 @@
 
     <div class="container section-title" data-aos="fade-up">
         <h2>Berita <span class="text-danger">Desa</span></h2>
-        <p>Informasi terbaru dari Desa Sidomulyo</p>
+        <p>Informasi terbaru dari Desa Kepudibener</p>
     </div><div class="container">
         <div class="row gy-4">
 
@@ -1587,7 +1587,7 @@
                     </div>
 
                     <div class="p-4">
-                        <p class="post-category text-danger fw-bold small mb-2">#BeritaSidomulyo</p>
+                        <p class="post-category text-danger fw-bold small mb-2">#BeritaKepudibener</p>
 
                         <h2 class="title h5 fw-bold mb-3">
                             <a href="/berita/{{ $item->slug }}" class="text-dark text-decoration-none hover-danger">
@@ -1640,7 +1640,7 @@
     <span class="text-muted small fw-bold text-uppercase tracking-wider">Hubungi Kami</span>
     <h2 class="fw-800 mt-2">Kritik & <span class="text-danger">Saran</span></h2>
     <div class="mx-auto bg-danger mb-4" style="width: 50px; height: 3px; border-radius: 10px;"></div>
-    <p class="text-secondary">Sampaikan aspirasi Anda untuk kemajuan Desa Sidomulyo yang lebih baik</p>
+    <p class="text-secondary">Sampaikan aspirasi Anda untuk kemajuan Desa Kepudibener yang lebih baik</p>
   </div>
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1667,7 +1667,7 @@
               </div>
               <div>
                 <p class="data-label mb-0">Email Resmi</p>
-                <p class="data-value small">sidomulyo@gmail.com</p>
+                <p class="data-value small">Kepudibener@gmail.com</p>
               </div>
             </div>
 
@@ -1809,7 +1809,7 @@
         </div>
         <div class="announcement-content">
             <div class="scrolling-text">
-                Selamat Datang, **{{ Auth::guard('warga')->user()->nama_warga }}**! Selamat menggunakan Layanan Digital Desa Sidomulyo. 
+                Selamat Datang, **{{ Auth::guard('warga')->user()->nama_warga }}**! Selamat menggunakan Layanan Digital Desa Kepudibener. 
                 <span class="mx-4 text-danger">|</span> 
                 Pastikan data profil Anda sudah lengkap untuk mempermudah pengajuan surat secara mandiri.
                 <span class="mx-4 text-danger">|</span> 
@@ -1896,10 +1896,10 @@
       
       <div class="col-lg-4 col-md-6 footer-about">
         <a href="/" class="d-flex align-items-center text-decoration-none">
-          <h3 class="sitename text-white fw-bold mb-0">Desa <span class="text-danger">Sidomulyo</span></h3>
+          <h3 class="sitename text-white fw-bold mb-0">Desa <span class="text-danger">Kepudibener</span></h3>
         </a>
         <p class="mt-3 text-secondary">
-          Website resmi Pemerintah Desa Sidomulyo. Kami berkomitmen memberikan transparansi informasi dan kemudahan layanan administrasi bagi seluruh warga.
+          Website resmi Pemerintah Desa Kepudibener. Kami berkomitmen memberikan transparansi informasi dan kemudahan layanan administrasi bagi seluruh warga.
         </p>
         <div class="social-links d-flex mt-4">
           <a href="#" class="me-2 rounded-circle shadow-sm"><i class="bi bi-facebook"></i></a>
@@ -1937,7 +1937,7 @@
           <i class="bi bi-telephone-fill text-danger me-2"></i> +62 812-3456-789
         </p>
         <p class="text-secondary">
-          <i class="bi bi-envelope-fill text-danger me-2"></i> sidomulyo@gmail.com
+          <i class="bi bi-envelope-fill text-danger me-2"></i> Kepudibener@gmail.com
         </p>
       </div>
 
@@ -1946,7 +1946,7 @@
 
   <div class="container mt-5 pt-4 border-top border-secondary border-opacity-25 text-center">
     <div class="copyright text-secondary small">
-      &copy; {{ date('Y') }} <strong class="text-white">Desa Sidomulyo</strong>. All Rights Reserved.
+      &copy; {{ date('Y') }} <strong class="text-white">Desa Kepudibener</strong>. All Rights Reserved.
     </div>
     <div class="credits text-muted mt-1" style="font-size: 0.7rem;">
       Dikembangkan secara mandiri untuk kemajuan desa.

@@ -159,10 +159,25 @@
                   </div>
 
                   {{-- Email --}}
-                  `
+                  <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+                    <label class="form-label fw-bold"><i class="bi bi-envelope me-2"></i>Email Kontak</label>
+                    <input type="email" name="email_warga" class="form-control @error('email_warga') is-invalid @enderror" value="{{ old('email_warga', $warga->email_warga) }}">
+                    @error('email_warga')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  {{-- Tempat Lahir --}}
+                  <div class="col-md-6" data-aos="fade-left" data-aos-delay="350">
+                    <label class="form-label fw-bold"><i class="bi bi-geo me-2"></i>Tempat Lahir</label>
+                    <input type="text" name="tempat_lahir" class="form-control @error('tempat_lahir') is-invalid @enderror" value="{{ old('tempat_lahir', $warga->tempat_lahir) }}">
+                    @error('tempat_lahir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
 
                   {{-- Tanggal Lahir --}}
-                  <div class="col-md-6" data-aos="fade-left" data-aos-delay="400">
+                  <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
                     <label class="form-label fw-bold"><i class="bi bi-calendar-event me-2"></i>Tanggal Lahir</label>
                     <input type="date" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror" value="{{ old('tgl_lahir', $warga->tgl_lahir) }}" required>
                     @error('tgl_lahir')
@@ -182,6 +197,39 @@
                     @enderror
                   </div>
 
+                  {{-- Agama --}}
+                  <div class="col-md-4" data-aos="fade-up" data-aos-delay="550">
+                    <label class="form-label fw-bold"><i class="bi bi-star me-2"></i>Agama</label>
+                    <select name="agama" class="form-select @error('agama') is-invalid @enderror">
+                        <option value="" disabled selected>-- Pilih Agama --</option>
+                        <option value="Islam" {{ old('agama', $warga->agama) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                        <option value="Kristen" {{ old('agama', $warga->agama) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+                        <option value="Katolik" {{ old('agama', $warga->agama) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                        <option value="Hindu" {{ old('agama', $warga->agama) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                        <option value="Buddha" {{ old('agama', $warga->agama) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                        <option value="Konghucu" {{ old('agama', $warga->agama) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                    </select>
+                    @error('agama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  {{-- Golongan Darah --}}
+                  <div class="col-md-4" data-aos="fade-up" data-aos-delay="570">
+                    <label class="form-label fw-bold"><i class="bi bi-droplet me-2"></i>Golongan Darah</label>
+                    <select name="golongan_darah" class="form-select @error('golongan_darah') is-invalid @enderror">
+                        <option value="" disabled selected>-- Pilih Golongan Darah --</option>
+                        <option value="A" {{ old('golongan_darah', $warga->golongan_darah) == 'A' ? 'selected' : '' }}>A</option>
+                        <option value="B" {{ old('golongan_darah', $warga->golongan_darah) == 'B' ? 'selected' : '' }}>B</option>
+                        <option value="AB" {{ old('golongan_darah', $warga->golongan_darah) == 'AB' ? 'selected' : '' }}>AB</option>
+                        <option value="O" {{ old('golongan_darah', $warga->golongan_darah) == 'O' ? 'selected' : '' }}>O</option>
+                        <option value="Tidak Tahu" {{ old('golongan_darah', $warga->golongan_darah) == 'Tidak Tahu' ? 'selected' : '' }}>Tidak Tahu</option>
+                    </select>
+                    @error('golongan_darah')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
                   {{-- Status Hubungan --}}
                   <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
                     <label class="form-label fw-bold"><i class="bi bi-people me-2"></i>Status Hubungan</label>
@@ -191,6 +239,15 @@
                         <option value="Anggota Keluarga" {{ old('status', $warga->status) == 'Anggota Keluarga' ? 'selected' : '' }}>Anggota Keluarga</option>
                     </select>
                     @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  {{-- Kewarganegaraan --}}
+                  <div class="col-md-4" data-aos="fade-up" data-aos-delay="650">
+                    <label class="form-label fw-bold"><i class="bi bi-flag me-2"></i>Kewarganegaraan</label>
+                    <input type="text" name="kewarganegaraan" class="form-control @error('kewarganegaraan') is-invalid @enderror" value="{{ old('kewarganegaraan', $warga->kewarganegaraan ?? 'WNI') }}">
+                    @error('kewarganegaraan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>

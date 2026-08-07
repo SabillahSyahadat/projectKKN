@@ -73,6 +73,10 @@ class Warga extends Authenticatable
         'jenis_kelamin' => $data->jenis_kelamin,
         'status'        => $data->status,
         'pekerjaan'     => $data->pekerjaan,
+        'tempat_lahir' => $data->tempat_lahir,
+        'agama' => $data->agama,
+        'golongan_darah' => $data->golongan_darah,
+        'kewarganegaraan' => $data->kewarganegaraan,
     ]);
 
     // Update password jika diisi

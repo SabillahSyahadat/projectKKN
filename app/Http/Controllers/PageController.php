@@ -11,7 +11,6 @@ use App\Models\Galeri;
 use App\Models\Perangkat;
 use Carbon\carbon;
 
-
 class PageController extends Controller
 {
     public function index()

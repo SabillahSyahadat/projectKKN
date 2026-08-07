@@ -83,8 +83,6 @@ class AuthController extends Controller
     public function update(Request $request)
     {
     $user = Auth::guard('warga')->user();
-   
-
   
     $request->validate([
         'nama_warga'   => 'required|string|max:255', 
@@ -102,7 +100,7 @@ class AuthController extends Controller
     Auth::guard('warga')->login($user);
 
     return redirect()->route('profil.show')->with('validasi', 'Profil berhasil diperbarui!');
-    }
+}
 
     public function logout(Request $request)
     {

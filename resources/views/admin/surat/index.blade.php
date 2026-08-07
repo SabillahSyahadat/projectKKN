@@ -1,5 +1,6 @@
 <x-layout>
     <x-slot:title>Manajemen Surat</x-slot:title>
+    
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -9,6 +10,20 @@
                 <h2 class="fw-800 text-dark mb-1 tracking-tight">Pengajuan <span class="text-indigo">Surat</span></h2>
                 <p class="text-muted mb-0">Kelola dan proses permintaan dokumen administrasi warga.</p>
             </div>
+        </div>
+
+        <div>
+            @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm mb-4" role="alert" style="border-radius: 12px; border-left: 5px solid #dc3545;">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-exclamation-triangle-fill fs-5 me-3 text-danger"></i>
+                    <div>
+                        <strong>Gagal menyetujui surat </strong> {{ session('error') }}
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         </div>
 
         <ul class="nav nav-pills mb-4 p-2 bg-white rounded-4 shadow-sm border" id="pills-tab" role="tablist" data-aos="fade-up" data-aos-delay="100">
@@ -40,6 +55,8 @@
                 @include('admin.surat._table', ['surats' => $suratSKTM])
             </div>
         </div>
+
+        
     </div>
 
     <style>

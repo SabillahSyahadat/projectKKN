@@ -30,8 +30,8 @@ return new class extends Migration
             $table->string('kewarganegaraan')->nullable();
             $table->string('pekerjaan')->nullable();
             $table->string('email_warga', 512)->nullable();
-            
-            // Password dibiarkan wajib (tanpa nullable) karena warga butuh ini untuk login pertama kali.
+            $table->string('status_pernikahan', 64)->nullable();
+             
             // Admin akan men-generate password default di Controller saat mendaftarkan NIK.
             $table->string('password_warga', 512)->nullable();
 

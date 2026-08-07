@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('username_admin')->unique();
+            $table->string('username_admin')->unique()->nullable();
             $table->string('email_admin')->unique();
             $table->string('password_admin');
             $table->rememberToken();

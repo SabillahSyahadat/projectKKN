@@ -110,7 +110,6 @@ public function detailLaporan($id)
     ]);
 }
 
-
     public function surat() {
     $suratPengantar = Surat::with('warga')->where('jenis_surat', 'Surat Pengantar')->latest()->get();
     $suratDomisili = Surat::with('warga')->where('jenis_surat', 'Surat Domisili')->latest()->get();
@@ -126,6 +125,9 @@ public function setujui(Request $request, $id)
 
 if (!$surat) {
     return redirect()->back()->with('error', 'Data surat tidak ditemukan!');
+}
+if($surat->nomor_surat == null){
+    return redirect()->back()->with('error', 'Nomor surat wajin di isi');
 }
 
 $surat->status = 'disetujui';
