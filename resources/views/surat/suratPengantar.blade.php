@@ -87,7 +87,7 @@
             <p>Sidomulyo, {{ date('d F Y') }}</p>
             <p>Kepala Desa Sidomulyo,</p>
             <div class="space-ttd"></div>
-            <p><strong>( NAMA KEPALA DESA )</strong></p>
+            <p><strong>( SHOLIKHIN )</strong></p>
             <p>NIP. 19820301 xxxx xx x xxx</p>
         </div>
     </div>

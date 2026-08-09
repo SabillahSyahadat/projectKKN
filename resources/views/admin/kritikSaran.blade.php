@@ -6,8 +6,8 @@
     <div class="container-fluid py-5 page-content">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5" data-aos="fade-down">
             <div>
-                <h2 class="fw-800 text-dark mb-1 tracking-tight">Aspirasi <span class="text-danger">Warga</span></h2>
-                <p class="text-muted mb-0">Dengarkan kritik dan saran untuk kemajuan Desa Sidomulyo.</p>
+                <h2 class="fw-800 text-dark mb-1 tracking-tight">Kritik <span class="text-danger">& Saran</span></h2>
+                <p class="text-muted mb-0">Dengarkan kritik dan saran untuk kemajuan Desa Kepudibener.</p>
             </div>
             <div class="mt-3 mt-md-0">
                 <div class="stats-badge d-flex align-items-center gap-3">

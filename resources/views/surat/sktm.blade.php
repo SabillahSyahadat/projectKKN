@@ -69,9 +69,10 @@
                     <img src="{{ public_path('assets/img/logo-surat.png') }}" class="logo">
                 </td>
                 <td class="header-text" style="width: 85%;">
-                    <h3>Pemerintah Kabupaten Lamongan</h3>
-                    <h3>Kecamatan Deket</h3> <h2>Kantor Kepala Desa Sidomulyo</h2>
-                    <p>Alamat: Jl. Raya Desa Sidomulyo No. 01, Kode Pos 62291</p>
+                    <h3>PEMERINTAH KABUPATEN LAMONGAN</h3>
+                    <h3>KECAMATAN TURI</h3> 
+                    <h2>KANTOR KEPALA DESA KEPUDIBENER</h2>
+                    <p>Alamat: Jl. Raya Desa Kepudibener No. 162, Kode Pos 62291</p>
                 </td>
             </tr>
         </table>
@@ -137,10 +138,10 @@
             <tr>
                 <td style="width: 55%;"></td>
                 <td class="ttd-box">
-                    <p>Sidomulyo, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
-                    <p style="margin-top: -15px;">Kepala Desa Sidomulyo</p>
+                    <p>Kepudibener, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
+                    <p style="margin-top: -15px;">Kepala Desa Kepudibener</p>
                     <div class="space-ttd"></div>
-                    <p class="bold"><u>( NAMA KEPALA DESA )</u></p>
+                    <p class="bold"><u>( SHOLIKHIN )</u></p>
                     <p style="margin-top: -15px;">NIP. 19820301 xxxx xx x xxx</p>
                 </td>
             </tr>
