@@ -84,9 +84,9 @@
 
     <div class="tanda-tangan">
         <div class="ttd-box">
-            <p>Sidomulyo, {{ date('d F Y') }}</p>
-            <p>Kepala Desa Sidomulyo,</p>
-            <div class="space-ttd"></div>
+            <p>Kepudibener, {{ date('d F Y') }}</p>
+            <p>Kepala Desa Kepudibener,</p>
+            <img src="{{ storage_path('app/ttd/image.png') }}" alt="" style="width: 250px; height: 100px;">
             <p><strong>( SHOLIKHIN )</strong></p>
             <p>NIP. 19820301 xxxx xx x xxx</p>
         </div>

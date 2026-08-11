@@ -9,7 +9,7 @@
 <meta name="keywords" content="Desa Kepudibener, Website Desa, Layanan Desa, Berita Desa">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo-surat.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -798,11 +798,16 @@
             <span class="badge bg-danger px-3 py-2 rounded-pill mb-2 mb-xl-0 me-3 shadow pulse-red">PENGUMUMAN TERBARU</span>
         </div>
         <h3 class="fw-bold display-6 text-white mb-3">Pemberitahuan <span class="text-danger">Warga</span></h3>
+        
+        @if($pemberitahuan)
         <p class="fs-5 text-white-50 lh-base">
-          Diberitahukan kepada seluruh warga Desa Kepudibener bahwa pelayanan 
-          administrasi desa tutup pada tanggal <strong>17 Agustus 2026</strong> dalam rangka 
-          Hari Kemerdekaan RI. Pelayanan akan dibuka kembali pada hari kerja berikutnya.
+          {{ $pemberitahuan->isi }}
         </p>
+        @else
+        <p class="fs-5 text-white-50 lh-base">
+          Belum ada pengumuman
+        </p>
+        @endif
       </div>
 
       <div class="col-xl-3 text-center text-xl-end">
@@ -1239,7 +1244,7 @@
       <div class="col-lg-3 col-md-6">
         <div class="stats-item text-center w-100 h-100 p-4 rounded-4 glass-card">
           <i class="bi bi-shop fs-1 text-danger mb-3 d-block"></i>
-          <span data-purecounter-start="0" data-purecounter-end="145" data-purecounter-duration="1" class="purecounter display-5 fw-bold text-white"></span>
+          <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter display-5 fw-bold text-white"></span>
           <p class="text-light opacity-75 mb-0 mt-2 fw-bold text-uppercase small">UMKM Aktif</p>
         </div>
       </div>
@@ -1564,70 +1569,266 @@
 </section><!-- /Faq Section -->
 
     <!-- Recent Posts Section -->
-    <section id="recent-posts" class="recent-posts section">
+    <section id="recent-posts" class="recent-posts section" style="background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%); padding: 80px 0;">
 
-    <div class="container section-title" data-aos="fade-up">
-        <h2>Berita <span class="text-danger">Desa</span></h2>
-        <p>Informasi terbaru dari Desa Kepudibener</p>
-    </div><div class="container">
-        <div class="row gy-4">
+    <div class="container section-title" data-aos="fade-up" style="margin-bottom: 50px;">
+        <div class="text-center">
+            <span class="badge bg-danger bg-opacity-10 text-danger fw-semibold px-3 py-2 rounded-pill mb-3 d-inline-block" style="font-size: 0.85rem; letter-spacing: 0.5px;">
+                <i class="bi bi-newspaper me-1"></i> Berita Terkini
+            </span>
+            <h2 class="fw-bold" style="font-size: 2.2rem; color: #1a1a2e;">Berita <span style="color: #dc3545;">Desa</span></h2>
+            <p class="text-muted mx-auto" style="max-width: 500px; font-size: 1.05rem;">Informasi terbaru dari Desa Kepudibener</p>
+        </div>
+    </div>
 
-            @forelse($beritas as $item)
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <article class="h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+    <div class="container">
+        <div class="row g-4">
 
-                    <div class="post-img" style="height: 250px; overflow: hidden;">
+            @forelse($beritas->take(6) as $item)
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                <article class="berita-card h-100">
+
+                    <div class="berita-card__img">
                         @if($item->gambar_berita)
-                            <!-- Cukup panggil 'storage/' karena $item->gambar_berita sudah berisi 'uploads/berita/namafile.jpg' -->
-                            <img src="{{ asset('storage/' . $item->gambar_berita) }}" alt="{{ $item->nama_berita }}" class="img-fluid w-100 h-100 object-fit-cover transition-scale">
+                            <img src="{{ asset('storage/' . $item->gambar_berita) }}" alt="{{ $item->nama_berita }}" loading="lazy">
                         @else
-                            <!-- Untuk default image, tetap gunakan full path karena diketik manual -->
-                            <img src="{{ asset('storage/uploads/berita/template.png') }}" alt="Default Image" class="img-fluid w-100 h-100 object-fit-cover">
+                            <img src="{{ asset('storage/uploads/berita/template.png') }}" alt="Default Image" loading="lazy">
                         @endif
+                        <div class="berita-card__overlay"></div>
+                        <span class="berita-card__badge">#BeritaKepudibener</span>
                     </div>
 
-                    <div class="p-4">
-                        <p class="post-category text-danger fw-bold small mb-2">#BeritaKepudibener</p>
-
-                        <h2 class="title h5 fw-bold mb-3">
-                            <a href="/berita/{{ $item->slug }}" class="text-dark text-decoration-none hover-danger">
-                                {{ $item->nama_berita }}
+                    <div class="berita-card__body">
+                        <h3 class="berita-card__title">
+                            <a href="/berita/{{ $item->slug }}">
+                                {{ Str::limit($item->nama_berita, 70) }}
                             </a>
-                        </h2>
+                        </h3>
 
-                        <div class="d-flex align-items-center justify-content-between mt-auto pt-3 border-top">
-                            <div class="post-meta">
-                                <p class="post-date mb-0 text-muted small">
-                                    <i class="bi bi-calendar3 me-1"></i>
-                                    <time datetime="{{ $item->created_at }}">{{ $item->created_at->translatedFormat('d M Y') }}</time>
-                                </p>
+                        <div class="berita-card__footer">
+                            <div class="berita-card__date">
+                                <i class="bi bi-calendar3"></i>
+                                <time datetime="{{ $item->created_at }}">{{ $item->created_at->translatedFormat('d M Y') }}</time>
                             </div>
-                            <a href="/berita/{{ $item->slug }}" class="readmore stretched-link"><i class="bi bi-arrow-right"></i></a>
+                            <a href="/berita/{{ $item->slug }}" class="berita-card__link">
+                                Baca <i class="bi bi-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
 
                 </article>
-            </div>@empty
+            </div>
+            @empty
             <div class="col-12 text-center py-5">
-                <i class="bi bi-newspaper display-1 text-muted"></i>
-                <p class="mt-3 text-muted">Belum ada berita terbaru saat ini.</p>
+                <div style="background: white; border-radius: 20px; padding: 50px 30px; max-width: 400px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <i class="bi bi-newspaper" style="font-size: 3.5rem; color: #dc354550;"></i>
+                    <p class="mt-3 text-muted fw-medium" style="font-size: 1.05rem;">Belum ada berita terbaru saat ini.</p>
+                </div>
             </div>
             @endforelse
 
-        </div></div>
+        </div>
+
+        
+    </div>
 
     <style>
-        .transition-scale {
-            transition: transform 0.3s ease;
+        /* ===== Berita Card ===== */
+        .berita-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            flex-direction: column;
         }
-        article:hover .transition-scale {
-            transform: scale(1.1);
+        .berita-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(220, 53, 69, 0.12),
+                        0 4px 16px rgba(0, 0, 0, 0.08);
         }
-        .hover-danger:hover {
-            color: #dc3545 !important;
+
+        /* Image */
+        .berita-card__img {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
         }
-        .object-fit-cover {
+        .berita-card__img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .berita-card:hover .berita-card__img img {
+            transform: scale(1.08);
+        }
+        .berita-card__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+            pointer-events: none;
+        }
+        .berita-card__badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(220, 53, 69, 0.9);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Body */
+        .berita-card__body {
+            padding: 20px 22px 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .berita-card__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 16px;
+            flex: 1;
+            color: #1a1a2e;
+        }
+        .berita-card__title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .berita-card__title a:hover {
+            color: #dc3545;
+        }
+
+        /* Footer */
+        .berita-card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 14px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: auto;
+        }
+        .berita-card__date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #888;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+        .berita-card__date i {
+            font-size: 0.78rem;
+            color: #dc3545;
+        }
+        .berita-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #dc3545;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.25s ease, color 0.25s ease;
+        }
+        .berita-card__link:hover {
+            gap: 8px;
+            color: #b02a37;
+        }
+
+        /* CTA Button */
+        .btn-lihat-berita {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
+        }
+        .btn-lihat-berita:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(220, 53, 69, 0.4);
+            color: #fff;
+            background: linear-gradient(135deg, #e04555 0%, #dc3545 100%);
+        }
+
+        /* ===== Mobile Responsive ===== */
+        @media (max-width: 767.98px) {
+            #recent-posts {
+                padding: 50px 0 !important;
+            }
+            #recent-posts .section-title {
+                margin-bottom: 30px !important;
+            }
+            #recent-posts .section-title h2 {
+                font-size: 1.6rem !important;
+            }
+            #recent-posts .section-title p {
+                font-size: 0.92rem !important;
+            }
+            .berita-card__img {
+                height: 180px;
+            }
+            .berita-card__body {
+                padding: 16px 18px 14px;
+            }
+            .berita-card__title {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+            .berita-card__date {
+                font-size: 0.78rem;
+            }
+            .berita-card__link {
+                font-size: 0.8rem;
+            }
+            .berita-card {
+                border-radius: 12px;
+            }
+            .btn-lihat-berita {
+                padding: 12px 28px;
+                font-size: 0.88rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .row.g-4 > [class*="col-"] {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .berita-card__img {
+                height: 160px;
+            }
+            .berita-card__badge {
+                font-size: 0.68rem;
+                padding: 4px 10px;
+                top: 10px;
+                left: 10px;
+            }
+        }
+
+        /* Tablet - 2 columns look good */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .berita-card__img {
+                height: 200px;
+            }
         }
     </style>
 

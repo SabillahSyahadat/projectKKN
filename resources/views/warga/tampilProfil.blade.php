@@ -307,6 +307,17 @@
                     </div>
                   </div>
                 </div>
+
+                {{-- Status Kawin --}}
+                <div class="col-md-6">
+                  <div class="info-group" data-aos="fade-up" data-aos-delay="550">
+                    <div class="icon-box"><i class="bi bi-flag"></i></div>
+                    <div class="info-text-wrapper">
+                      <span class="info-label">Status Nikah</span>
+                      <p class="info-value">{{ $user->status_pernikahan ?? '-' }}</p>
+                    </div>
+                  </div>
+                </div>
           
 
               </div>

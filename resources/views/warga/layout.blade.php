@@ -223,7 +223,7 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <a href="{{ url('/') }}" class="text-decoration-none">
-        <h1 class="sitename">SIDOMULYO</h1>
+        <h1 class="sitename">KEPUDIBENER</h1>
       </a>
     </div>
 

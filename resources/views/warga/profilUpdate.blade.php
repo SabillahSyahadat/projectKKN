@@ -158,14 +158,7 @@
                     @enderror
                   </div>
 
-                  {{-- Email --}}
-                  <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
-                    <label class="form-label fw-bold"><i class="bi bi-envelope me-2"></i>Email Kontak</label>
-                    <input type="email" name="email_warga" class="form-control @error('email_warga') is-invalid @enderror" value="{{ old('email_warga', $warga->email_warga) }}">
-                    @error('email_warga')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                  </div>
+                  
 
                   {{-- Tempat Lahir --}}
                   <div class="col-md-6" data-aos="fade-left" data-aos-delay="350">
@@ -179,7 +172,7 @@
                   {{-- Tanggal Lahir --}}
                   <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
                     <label class="form-label fw-bold"><i class="bi bi-calendar-event me-2"></i>Tanggal Lahir</label>
-                    <input type="date" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror" value="{{ old('tgl_lahir', $warga->tgl_lahir) }}" required>
+                    <input type="date" name="tgl_lahir" value="{{ old('tgl_lahir', $warga->tgl_lahir) }}" class="form-control @error('tgl_lahir') is-invalid @enderror" value="{{ old('tgl_lahir', $warga->tgl_lahir) }}" required>
                     @error('tgl_lahir')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -257,6 +250,21 @@
                     <label class="form-label fw-bold"><i class="bi bi-briefcase me-2"></i>Pekerjaan</label>
                     <input type="text" name="pekerjaan" class="form-control @error('pekerjaan') is-invalid @enderror" value="{{ old('pekerjaan', $warga->pekerjaan) }}" required>
                     @error('pekerjaan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  {{-- Status Nikah --}}
+                  <div class="col-md-4" data-aos="fade-up" data-aos-delay="700">
+                    <label class="form-label fw-bold"><i class="bi bi-briefcase me-2"></i>Status Nikah</label>
+                    <select name="status_pernikahan" class="form-select @error('status_pernikahan') is-invalid @enderror" required>
+                        <option value="" disabled selected>-- Pilih Status Nikah --</option>
+                        <option value="Belum Kawin" {{ old('status_pernikahan', $warga->status_pernikahan) == 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
+                        <option value="Kawin" {{ old('status_pernikahan', $warga->status_pernikahan) == 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                        <option value="Cerai" {{ old('status_pernikahan', $warga->status_pernikahan) == 'Cerai' ? 'selected' : '' }}>Cerai</option>
+                        <option value="Cerai Mati" {{ old('status_pernikahan', $warga->status_pernikahan) == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
+                    </select>
+                    @error('status_pernikahan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>

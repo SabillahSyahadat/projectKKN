@@ -9,6 +9,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerangkatController;
+use App\Http\Controllers\PemberitahuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,9 @@ Route::middleware('auth.admin')->group(function () {
     // Dashboard
     Route::get('admin/dashboard', [AuthController::class, 'adminDashboard'])->name('adminDasboard');
 
+    // Pemberitahuan
+    Route::get('/admin/pemberitahuan', [PemberitahuanController::class, 'showPemberitahuan'])->name('admin.pemberitahuan.show');
+    Route::post('/admin/pemberitahuan/update', [PemberitahuanController::class, 'updatePemberitahuan'])->name('admin.pemberitahuan.update');
     // Logout Admin
     Route::post('admin/logout', [AuthController::class, 'logoutAdmin'])->name('logoutAdmin');
 

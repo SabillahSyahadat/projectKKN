@@ -140,7 +140,7 @@
                 <td class="ttd-box">
                     <p>Kepudibener, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
                     <p style="margin-top: -15px;">Kepala Desa Kepudibener</p>
-                    <div class="space-ttd"></div>
+                    <img src="{{ storage_path('app/ttd/image.png') }}" alt="" style="width: 250px; height: 100px;">
                     <p class="bold"><u>( SHOLIKHIN )</u></p>
                     <p style="margin-top: -15px;">NIP. 19820301 xxxx xx x xxx</p>
                 </td>

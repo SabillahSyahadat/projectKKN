@@ -25,6 +25,7 @@ class Warga extends Authenticatable
         'agama',
         'golongan_darah',
         'kewarganegaraan',
+        'status_pernikahan',
     ];
 
     protected $casts = [
@@ -77,6 +78,7 @@ class Warga extends Authenticatable
         'agama' => $data->agama,
         'golongan_darah' => $data->golongan_darah,
         'kewarganegaraan' => $data->kewarganegaraan,
+        'status_pernikahan' => $data->status_pernikahan,
     ]);
 
     // Update password jika diisi

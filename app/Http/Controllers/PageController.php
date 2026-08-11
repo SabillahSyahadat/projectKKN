@@ -10,6 +10,7 @@ use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Perangkat;
 use Carbon\carbon;
+use App\Models\Pemberitahuan;
 
 class PageController extends Controller
 {
@@ -20,15 +21,18 @@ class PageController extends Controller
         $categories = Galeri::select('kategori')->distinct()->get();
         $total = Warga::count();
         $kepalaKeluarga = Warga::where('status', 'Kepala Keluarga')->count();
-        $beritas = Berita::latest()->take(3)->get();
+        $beritas = Berita::latest()->take(6)->get();
         $jumPerangkat = Perangkat::count();
+        $pemberitahuan = Pemberitahuan::first();
+
         return view('index', ['totalWarga' => $total,
                                 'beritas' => $beritas,
                                 'galeries' => $galeries,
                                 'categories' => $categories,
                                 'perangkat' => $perangkat,
                                 'kepalaKeluarga' => $kepalaKeluarga,
-                                'jumPerangkat' => $jumPerangkat]);
+                                'jumPerangkat' => $jumPerangkat,
+                                'pemberitahuan' => $pemberitahuan]);
     }
 
     public function updateProfil()
