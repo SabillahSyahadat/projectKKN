@@ -882,7 +882,7 @@
       
       <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
         <div class="position-relative overflow-hidden rounded-5 shadow-lg profile-img-wrapper border border-5 border-white">
-          <img src="{{ asset('assets/img/features-bg.jpg') }}" class="img-fluid w-100 h-100 object-fit-cover shadow-inner" alt="Kantor Balai Desa Kepudibener">
+          <img src="{{ asset('assets/img/pemberitahuan.jpg') }}" class="img-fluid w-100 h-100 object-fit-cover shadow-inner" alt="Kantor Balai Desa Kepudibener">
           
           <div class="position-absolute top-0 start-0 w-100 h-100 bg-overlay-premium"></div>
           

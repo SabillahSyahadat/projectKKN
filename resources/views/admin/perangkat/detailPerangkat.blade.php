@@ -232,9 +232,9 @@
                     </div>
 
                     <div class="mt-5 d-flex gap-2">
-                        <a href="{{ url('/admin/perangkat/edit/'.$perangkat->id) }}" class="btn btn-dark btn-action px-4">
+                        {{-- <a href="{{ url('/admin/perangkat/edit/'.$perangkat->id) }}" class="btn btn-dark btn-action px-4">
                             <i class="bi bi-pencil-square me-2"></i>Edit Data
-                        </a>
+                        </a> --}}
                         <form action="{{ route('admin.perangkat.delete', $perangkat->id) }}" method="POST" class="d-inline form-delete">
                                         @csrf
                                         @method('DELETE')

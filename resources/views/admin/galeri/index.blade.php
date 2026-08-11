@@ -49,9 +49,9 @@
                                 </p>
 
                                 <div class="d-flex align-items-center justify-content-between pt-2 border-top-dashed">
-                                    <a href="#" class="btn-action-edit" title="Edit">
+                                    {{-- <a href="#" class="btn-action-edit" title="Edit">
                                         <i class="bi bi-pencil-square"></i> <span>Edit</span>
-                                    </a>
+                                    </a> --}}
                                     <form action="{{ route('admin.galeri.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

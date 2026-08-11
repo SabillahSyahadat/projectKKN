@@ -131,9 +131,9 @@ const NewsCard = ({ item, storagePath, onDelete }) => {
                     <div className="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
                         <a href={`/admin/berita/${item.slug}`} className="btn btn-sm text-danger fw-bold p-0">BACA</a>
                         <div className="d-flex gap-2">
-                            <a href={`/admin/berita/${item.id}/edit`} className="btn btn-light btn-sm rounded-circle shadow-sm">
+                            {/* <a href={`/admin/berita/${item.id}/edit`} className="btn btn-light btn-sm rounded-circle shadow-sm">
                                 <i className="bi bi-pencil text-primary"></i>
-                            </a>
+                            </a> */}
                             <button onClick={onDelete} className="btn btn-light btn-sm rounded-circle shadow-sm">
                                 <i className="bi bi-trash text-danger"></i>
                             </button>

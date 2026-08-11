@@ -47,9 +47,9 @@
                                     <a href="{{ route('showPerangkat', $staff->id) }}" class="btn btn-sm btn-light rounded-pill px-3 border" title="Detail">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-light rounded-pill px-3 border text-primary" title="Edit">
+                                    {{-- <a href="#" class="btn btn-sm btn-light rounded-pill px-3 border text-primary" title="Edit">
                                         <i class="bi bi-pencil-square"></i>
-                                    </a>
+                                    </a> --}}
                                     
                                 </div>
                             </div>
