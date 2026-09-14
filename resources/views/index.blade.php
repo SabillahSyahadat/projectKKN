@@ -1303,7 +1303,7 @@
   </div>
 
   <div class="container-fluid px-md-5">
-    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order" id="gallery-isotope">
 
       <div class="filter-wrapper mb-4" data-aos="fade-up" data-aos-delay="100">
         <ul class="portfolio-filters isotope-filters d-flex justify-content-start justify-content-md-center flex-nowrap flex-md-wrap gap-2 pb-3 pb-md-0">
@@ -1319,7 +1319,7 @@
       <div class="row gy-3 gy-md-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
         
         @foreach($galeries as $item)
-        <div class="col-lg-4 col-md-6 col-6 portfolio-item isotope-item filter-{{ Str::slug($item->kategori) }}">
+        <div class="col-lg-4 col-md-6 col-6 portfolio-item isotope-item filter-{{ Str::slug($item->kategori) }}" data-category="{{ Str::slug($item->kategori) }}">
           <div class="gallery-card rounded-4 overflow-hidden position-relative shadow-sm border-0">
             
             <div class="category-badge position-absolute z-3 bg-danger text-white px-2 py-1 rounded-pill fw-bold" style="top: 10px; left: 10px;">
@@ -1349,6 +1349,20 @@
         @endforeach
 
       </div>
+    </div>
+
+    <!-- Gallery Counter & Toggle Button -->
+    <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="gallery-counter mb-3">
+        <span class="badge bg-light text-dark border px-3 py-2 rounded-pill shadow-sm" id="gallery-count-badge" style="font-size: 0.85rem;">
+          <i class="bi bi-images text-danger me-1"></i>
+          Menampilkan <strong id="gallery-shown">0</strong> dari <strong id="gallery-total">0</strong> foto
+        </span>
+      </div>
+      <button class="btn gallery-toggle-btn rounded-pill px-4 py-2 shadow-sm" id="gallery-toggle-btn" style="display: none;">
+        <span class="btn-text">Lihat Semua</span>
+        <i class="bi bi-chevron-down ms-2 btn-icon"></i>
+      </button>
     </div>
   </div>
 
@@ -1447,7 +1461,199 @@
         align-items: center;
         justify-content: center;
     }
+
+    /* Hidden gallery items */
+    .portfolio-item.gallery-hidden {
+        display: none !important;
+    }
+    .portfolio-item.gallery-revealing {
+        animation: galleryReveal 0.5s cubic-bezier(0.2, 1, 0.22, 1) forwards;
+    }
+    @keyframes galleryReveal {
+        from { opacity: 0; transform: scale(0.85) translateY(20px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Toggle Button */
+    .gallery-toggle-btn {
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: none;
+        transition: all 0.3s cubic-bezier(0.2, 1, 0.22, 1);
+        letter-spacing: 0.3px;
+    }
+    .gallery-toggle-btn:hover {
+        background: linear-gradient(135deg, #c82333 0%, #a71d2a 100%);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 53, 69, 0.35) !important;
+    }
+    .gallery-toggle-btn:active {
+        transform: translateY(0);
+    }
+    .gallery-toggle-btn .btn-icon {
+        transition: transform 0.3s ease;
+    }
+    .gallery-toggle-btn.expanded .btn-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Counter badge pulse on change */
+    .gallery-counter .badge {
+        transition: all 0.3s ease;
+    }
+    .gallery-counter .badge.pulse {
+        animation: counterPulse 0.4s ease;
+    }
+    @keyframes counterPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
   </style>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const GALLERY_LIMIT = 6;
+    const container = document.querySelector('#gallery-isotope .isotope-container');
+    const allItems = Array.from(container.querySelectorAll('.portfolio-item'));
+    const toggleBtn = document.getElementById('gallery-toggle-btn');
+    const btnText = toggleBtn.querySelector('.btn-text');
+    const shownEl = document.getElementById('gallery-shown');
+    const totalEl = document.getElementById('gallery-total');
+    const countBadge = document.getElementById('gallery-count-badge');
+    let currentFilter = '*';
+    let isExpanded = false;
+
+    function getFilteredItems(filter) {
+      if (filter === '*') return allItems;
+      return allItems.filter(function(item) {
+        return item.classList.contains(filter.replace('.', ''));
+      });
+    }
+
+    function applyLimit() {
+      var filtered = getFilteredItems(currentFilter);
+      var totalCount = filtered.length;
+      var shownCount = 0;
+
+      // First: reset all items visibility for the current filter context
+      allItems.forEach(function(item) {
+        item.classList.remove('gallery-hidden', 'gallery-revealing');
+      });
+
+      if (isExpanded || totalCount <= GALLERY_LIMIT) {
+        // Show all matching items
+        filtered.forEach(function(item) {
+          item.classList.remove('gallery-hidden');
+        });
+        shownCount = totalCount;
+      } else {
+        // Show only first GALLERY_LIMIT items of the filtered set
+        filtered.forEach(function(item, index) {
+          if (index < GALLERY_LIMIT) {
+            item.classList.remove('gallery-hidden');
+          } else {
+            item.classList.add('gallery-hidden');
+          }
+        });
+        shownCount = GALLERY_LIMIT;
+      }
+
+      // Update counter with pulse animation
+      shownEl.textContent = shownCount;
+      totalEl.textContent = totalCount;
+      countBadge.classList.remove('pulse');
+      void countBadge.offsetWidth; // reflow
+      countBadge.classList.add('pulse');
+
+      // Show/hide toggle button
+      if (totalCount > GALLERY_LIMIT) {
+        toggleBtn.style.display = 'inline-flex';
+        if (isExpanded) {
+          btnText.textContent = 'Tampilkan Sedikit';
+          toggleBtn.classList.add('expanded');
+        } else {
+          btnText.textContent = 'Lihat Semua (' + (totalCount - GALLERY_LIMIT) + ' lagi)';
+          toggleBtn.classList.remove('expanded');
+        }
+      } else {
+        toggleBtn.style.display = 'none';
+      }
+
+      // Re-layout isotope after visibility changes
+      setTimeout(function() {
+        var isotopeEl = document.querySelector('#gallery-isotope .isotope-container');
+        if (isotopeEl && typeof Isotope !== 'undefined') {
+          var iso = Isotope.data(isotopeEl);
+          if (iso) {
+            iso.layout();
+          }
+        }
+      }, 50);
+    }
+
+    // Toggle button click
+    toggleBtn.addEventListener('click', function() {
+      isExpanded = !isExpanded;
+
+      if (isExpanded) {
+        // Reveal hidden items with staggered animation
+        var filtered = getFilteredItems(currentFilter);
+        filtered.forEach(function(item, index) {
+          if (index >= GALLERY_LIMIT) {
+            item.classList.remove('gallery-hidden');
+            item.classList.add('gallery-revealing');
+            item.style.animationDelay = ((index - GALLERY_LIMIT) * 0.07) + 's';
+          }
+        });
+      }
+
+      applyLimit();
+
+      // Re-init GLightbox for newly visible items
+      setTimeout(function() {
+        if (typeof GLightbox !== 'undefined') {
+          GLightbox({ selector: '.glightbox' });
+        }
+      }, 100);
+
+      // Scroll slightly if collapsing
+      if (!isExpanded) {
+        var section = document.getElementById('portfolio');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+
+    // Override filter clicks to reset expand state and apply limit
+    var filterItems = document.querySelectorAll('#gallery-isotope .portfolio-filters li');
+    filterItems.forEach(function(filterLi) {
+      filterLi.addEventListener('click', function() {
+        currentFilter = this.getAttribute('data-filter');
+        isExpanded = false;
+
+        // Wait for isotope to finish filtering, then apply our limit
+        setTimeout(function() {
+          applyLimit();
+
+          // Re-init GLightbox
+          if (typeof GLightbox !== 'undefined') {
+            GLightbox({ selector: '.glightbox' });
+          }
+        }, 300);
+      });
+    });
+
+    // Initial apply on page load (wait for isotope + imagesLoaded)
+    setTimeout(function() {
+      applyLimit();
+    }, 600);
+  });
+  </script>
 </section><!-- /Portfolio Section -->
 
     <!-- Pricing Section -->
@@ -1858,7 +2064,7 @@
               </div>
               <div>
                 <p class="data-label mb-0">Lokasi Kantor</p>
-                <p class="data-value small">Jl. Sambo Pinggir, Kec. Deket, Kab. Lamongan</p>
+                <p class="data-value small">Jl. Desa Kepudibener, Kec. Turi, Kab. Lamongan</p>
               </div>
             </div>
 
@@ -2132,7 +2338,7 @@
       <div class="col-lg-4 col-md-12 footer-contact text-md-start">
         <h4 class="text-white fw-bold mb-3 small-title">Kontak Kami</h4>
         <p class="text-secondary mb-1">
-          <i class="bi bi-geo-alt-fill text-danger me-2"></i> Jalan Sambo Pinggir, Kec. Deket, Kab. Lamongan
+          <i class="bi bi-geo-alt-fill text-danger me-2"></i> Jalan Sambo Pinggir, Kec. Kepudibener, Kab. Lamongan
         </p>
         <p class="text-secondary mb-1">
           <i class="bi bi-telephone-fill text-danger me-2"></i> +62 812-3456-789
